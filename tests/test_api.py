@@ -1,8 +1,12 @@
+import os
+import sys
 import unittest
 import requests
 from unittest.mock import patch
-from app import create_app
 import json
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from app import create_app
 
 
 class GetUfValueTestCase(unittest.TestCase):
@@ -19,7 +23,7 @@ class GetUfValueTestCase(unittest.TestCase):
         data = json.loads(response.data.decode())
 
         self.assertEqual(response.status_code, 200)
-        self.assertIn('date', data)
+        self.assertIn('UF', data)
         self.assertIsInstance(data, dict)
 
     def test_missing_date_parameter(self):
@@ -62,7 +66,7 @@ class GetUfValueTestCase(unittest.TestCase):
         data = json.loads(response.data.decode())
 
         self.assertEqual(response.status_code, 200)
-        self.assertIn('date', data)
+        self.assertIn('UF', data)
         self.assertIsInstance(data, dict)
 
     def test_date_url_parameter(self):
@@ -71,7 +75,7 @@ class GetUfValueTestCase(unittest.TestCase):
         data = json.loads(response.data.decode())
 
         self.assertEqual(response.status_code, 200)
-        self.assertIn('date', data)
+        self.assertIn('UF', data)
         self.assertIsInstance(data, dict)
 
     @patch('requests.get')
