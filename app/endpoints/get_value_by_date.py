@@ -5,8 +5,14 @@ from ..utils import get_uf_value
 get_value_by_date = Blueprint('get_value_by_date', __name__)
 
 
-@get_value_by_date.route('/api/date/<string:date_string>')
-def get_value(date_string):
+@get_value_by_date.route('/api/date', methods=['GET', 'POST'])
+def get_value():
+    # Try to get the date parameter from the URL first
+    date_string = request.args.get('date')
+
+    # If the date parameter is not present in the URL, try to get it from the request body
+    if not date_string:
+        date_string = request.json.get('date')
     if not date_string:
         return jsonify({'error': 'DATE_MISSING', 'message': 'Date is a required parameter.'}), 400
 
