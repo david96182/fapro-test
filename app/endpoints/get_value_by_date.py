@@ -1,5 +1,6 @@
 import datetime
 from flask import Blueprint, jsonify, request
+from ..utils import get_uf_value
 
 get_value_by_date = Blueprint('get_value_by_date', __name__)
 
@@ -18,5 +19,7 @@ def get_value(date_string):
     except ValueError:
         return jsonify({'error': 'DATE_INVALID_FORMAT', 'message': 'Date format must be DD-MM-YYYY.'}), 400
 
-    # If date validation passes, return the date value
-    return jsonify({'date': date_string})
+    # get the uf value from the web page
+    uf_value = get_uf_value(date)
+
+    return jsonify({'date': uf_value})
