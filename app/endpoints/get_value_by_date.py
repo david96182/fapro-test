@@ -31,4 +31,4 @@ def get_value():
     if isinstance(uf_value, dict):
         return jsonify(uf_value), 400
 
-    return jsonify({'date': uf_value})
+    return jsonify({'UF': uf_value})
