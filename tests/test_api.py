@@ -1,10 +1,5 @@
-import sys
-import os
-
-import requests
-
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import unittest
+import requests
 from unittest.mock import patch
 from app import create_app
 import json
