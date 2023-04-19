@@ -1,4 +1,4 @@
-# Fatpro Test
+# Fapro Test
 
 Este repositorio contiene una API desarrollada en Python usando Flask, requests, y BeautifulSoup4 para recuperar el valor de la Unidad de Fomento (UF) para una fecha específica. La API permite a los usuarios consultar el valor de la UF para cualquier fecha mayor al 01-01-2013.
 
