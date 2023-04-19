@@ -25,7 +25,14 @@ def get_uf_value(date):
 
 
 def get_value_from_web(url, date):
-    response = requests.get(url)
+    try:
+        response = requests.get(url)
+
+        # Raise an exception if the response status code is not 200 (OK)
+        response.raise_for_status()
+    except requests.exceptions.RequestException:
+        # Return an error message if the request fails due to a network error
+        return {'error': 'CONNECTION_ERROR', 'message': 'Unable to retrieve UF value due to a network error.'}
 
     # Parse the HTML with BeautifulSoup
     soup = BeautifulSoup(response.text, 'html.parser')

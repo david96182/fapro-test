@@ -28,4 +28,7 @@ def get_value():
     # get the uf value from the web page
     uf_value = get_uf_value(date)
 
+    if isinstance(uf_value, dict):
+        return jsonify(uf_value), 400
+
     return jsonify({'date': uf_value})
