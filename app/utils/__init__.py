@@ -41,7 +41,7 @@ def get_value_from_web(url, date):
     month_div = soup.find("div", id=months[date.month])
 
     # Find the th element with a value of the required day inside a strong element
-    strong_th = month_div.find('strong', text=date.day).parent
+    strong_th = month_div.find('strong', string=date.day).parent
 
     # Find the td element that is a child of the strong_th element
     td = strong_th.find_next_sibling('td')
